@@ -70,10 +70,7 @@ int setns(int __fd, int __ns_type) __INTRODUCED_IN(21);
 #define __CPU_MASK(x)  ((__CPU_BITTYPE)1 << ((x) & (__CPU_BITS - 1)))
 
 typedef struct {
-  union {
-    __CPU_BITTYPE  __bits_minimum[ CPU_SETSIZE / __CPU_BITS ];
-    __CPU_BITTYPE  __bits[0];
-  };
+  __CPU_BITTYPE  __bits[ CPU_SETSIZE / __CPU_BITS ];
 } cpu_set_t;
 
 int sched_setaffinity(pid_t __pid, size_t __set_size, const cpu_set_t* __set);

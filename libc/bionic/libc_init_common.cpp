@@ -45,7 +45,6 @@
 #include <async_safe/log.h>
 
 #include "private/WriteProtected.h"
-#include "private/bionic_arc4random.h"
 #include "private/bionic_defs.h"
 #include "private/bionic_globals.h"
 #include "private/bionic_tls.h"
@@ -67,7 +66,6 @@ void __libc_init_globals() {
   __libc_globals.mutate([](libc_globals* globals) {
     __libc_init_vdso(globals);
     __libc_init_setjmp_cookie(globals);
-    arc4random_buf(&globals->dtor_cookie, sizeof(globals->dtor_cookie));
   });
 }
 
